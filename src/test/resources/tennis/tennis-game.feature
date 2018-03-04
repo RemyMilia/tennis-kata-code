@@ -8,16 +8,17 @@ Background:
 
 Scenario: Score at the beginning of the game
 	When the tennis game starts
-    Then the game score should be 0:0
-    And the set score should be 0:0
+  Then the game score should be 0:0
+  And the set number should be 1
+  And the set score should be 0:0
 	And the match score should be 0:0
 
 Scenario: Score when server wins a point in a game
-	When the server wins a game's point
+	When the server wins a game point
 	Then the game score is 15:0
 
 Scenario: Score when receiver wins a point in a game
-	When the receiver wins a game's point
+	When the receiver wins a game point
 	Then the game score is 0:15
 	
 Scenario: Server scores after 2 points in a game
@@ -30,7 +31,7 @@ Scenario: Receiver scores after 2 points in a game
 	
 Scenario: Server scores in DEUCE 
 	When the score is 40:40 and the server wins a game point
-	Then the score is A:40
+	Then the score is 1:40
 	
 Scenario: Server scores in advantage
 	When the score is A:40, the set score is 0:0 and the server wins a game point
@@ -39,7 +40,7 @@ Scenario: Server scores in advantage
 
 Scenario: Receiver scores in DEUCE 
 	When the score is 40:40 and the receiver wins a game point
-	Then the score is 40:A
+	Then the score is 40:1
 	
 Scenario: Receiver scores in advantage
 	When the score is 40:A, the set score is 0:0 and the receiver wins a game point
@@ -47,7 +48,7 @@ Scenario: Receiver scores in advantage
 	And the game score 0:0
 
 Scenario: Server scores in disadvantage
-	When the score is 40:A and the server wins a game point
+	When the score is 40:1 and the server wins a game point
 	Then the score is 40:40
 
 Scenario: Server wins a game	
@@ -64,9 +65,3 @@ Scenario: Server wins a set
 	When the game score is 40:30, the set score is 5:0 and the server wins a game point
 	Then the set score is 6:0 
 	And the match score 1:0
-
-		
-
-
-	
-	Then the server wins the game
