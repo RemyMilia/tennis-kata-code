@@ -19,4 +19,8 @@ public class Game {
 	public void setReceiverScore(int receiverScore) {
 		this.receiverScore = receiverScore;
 	}
+
+	public void serverScores() {
+		this.serverScore += 15;
+	}
 }

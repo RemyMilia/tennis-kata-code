@@ -62,14 +62,13 @@ public class TennisGameStepDefs {
 
 	@When("^the server wins a game point$")
 	public void the_server_wins_a_game_s_point() throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		tennisGame.serverScores(true);
 	}
 
 	@Then("^the game score is (\\d+):(\\d+)$")
 	public void the_game_score_is(int arg1, int arg2) throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		assertThat(tennisGame.getGame().getServerScore()).isEqualTo(arg1);
+		assertThat(tennisGame.getGame().getReceiverScore()).isEqualTo(arg2);
 	}
 
 	@When("^the receiver wins a game point$")

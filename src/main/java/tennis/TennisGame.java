@@ -37,4 +37,11 @@ public class TennisGame {
 	public void setGame(Game game) {
 		this.game = game;
 	}
+
+	public void serverScores(boolean b) {
+		if (b) {
+			this.game.serverScores();
+		}
+
+	}
 }
