@@ -110,8 +110,10 @@ public class TennisGameStepDefs {
 
 	@Then("^the set score is (\\d+):(\\d+)$")
 	public void the_set_score_is(int arg1, int arg2) throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		assertThat(tennisGame.getSets().get(0).getServerScore())
+				.isEqualTo(arg1);
+		assertThat(tennisGame.getSets().get(0).getReceiverScore()).isEqualTo(
+				arg2);
 	}
 
 	@When("^the score is (\\d+):(\\d+), the set score is (\\d+):(\\d+) and the receiver wins a game point$")

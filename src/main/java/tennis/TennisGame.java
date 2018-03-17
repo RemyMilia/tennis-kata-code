@@ -43,6 +43,11 @@ public class TennisGame {
 			this.game.serverScores();
 			if (this.game.isGame()) {
 				endGame();
+				if (this.sets.size() == 0) {
+					this.sets.add(new Set(1, 0));
+				} else {
+					this.sets.get(this.sets.size() - 1).serverScores();
+				}
 			}
 		} else {
 			this.game.receiverScores();

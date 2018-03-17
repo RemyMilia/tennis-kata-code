@@ -4,6 +4,15 @@ public class Set {
 	private int serverScore = 0;
 	private int receiverScore = 0;
 
+	public Set(int serverScore, int receiverScore) {
+		super();
+		this.serverScore = serverScore;
+		this.receiverScore = receiverScore;
+	}
+
+	public Set() {
+	}
+
 	public int getServerScore() {
 		return serverScore;
 	}
@@ -18,5 +27,9 @@ public class Set {
 
 	public void setReceiverScore(int receiverScore) {
 		this.receiverScore = receiverScore;
+	}
+
+	public void serverScores() {
+		serverScore += 1;
 	}
 }
