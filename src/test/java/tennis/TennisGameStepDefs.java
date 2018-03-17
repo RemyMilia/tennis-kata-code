@@ -76,27 +76,36 @@ public class TennisGameStepDefs {
 		tennisGame.serverScores(false);
 	}
 
-	@When("^the score is (\\d+):(\\d+) and the server wins a game point$")
-	public void the_score_is_and_the_server_wins_a_game_point(int arg1, int arg2)
-			throws Exception {
-		tennisGame.getGame().setServerScore(arg1);
-		tennisGame.getGame().setReceiverScore(arg2);
-		tennisGame.getGame().serverScores();
-	}
-
-	@When("^the score is (\\d+):(\\d+) and the receiver wins a game point$")
-	public void the_score_is_and_the_receiver_wins_a_game_point(int arg1,
+	@When("^the game score is (\\d+):(\\d+) and the server wins a game point$")
+	public void the_game_score_is_and_the_server_wins_a_game_point(int arg1,
 			int arg2) throws Exception {
 		tennisGame.getGame().setServerScore(arg1);
 		tennisGame.getGame().setReceiverScore(arg2);
-		tennisGame.getGame().receiverScores();
+		tennisGame.serverScores(true);
 	}
 
-	@When("^the score is A:(\\d+), the set score is (\\d+):(\\d+) and the server wins a game point$")
-	public void the_score_is_A_the_set_score_is_and_the_server_wins_a_game_point(
-			int arg1, int arg2, int arg3) throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+	@When("^the game score is (\\d+):(\\d+) and the receiver wins a game point$")
+	public void the_game_score_is_and_the_receiver_wins_a_game_point(int arg1,
+			int arg2) throws Exception {
+		tennisGame.getGame().setServerScore(arg1);
+		tennisGame.getGame().setReceiverScore(arg2);
+		tennisGame.serverScores(false);
+	}
+
+	@When("^the game score is (\\d+):(\\d+), the set score is (\\d+):(\\d+) and the server wins a game point$")
+	public void the_game_score_is_the_set_score_is_and_the_server_wins_a_game_point(
+			int arg1, int arg2, int arg3, int arg4) throws Exception {
+		tennisGame.getGame().setServerScore(arg1);
+		tennisGame.getGame().setReceiverScore(arg2);
+		tennisGame.serverScores(true);
+	}
+
+	@When("^the game score is (\\d+):(\\d+), the set score is (\\d+):(\\d+) and the receiver wins a game point$")
+	public void the_game_score_is_the_set_score_is_and_the_receiver_wins_a_game_point(
+			int arg1, int arg2, int arg3, int arg4) throws Exception {
+		tennisGame.getGame().setServerScore(arg1);
+		tennisGame.getGame().setReceiverScore(arg2);
+		tennisGame.serverScores(false);
 	}
 
 	@Then("^the set score is (\\d+):(\\d+)$")
@@ -105,22 +114,15 @@ public class TennisGameStepDefs {
 		throw new PendingException();
 	}
 
-	@When("^the score is (\\d+):A, the set score is (\\d+):(\\d+) and the receiver wins a game point$")
-	public void the_score_is_A_the_set_score_is_and_the_receiver_wins_a_game_point(
-			int arg1, int arg2, int arg3) throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
-
-	@When("^the game score is (\\d+):(\\d+), the set score is (\\d+):(\\d+) and the server wins a game point$")
-	public void the_game_score_is_the_set_score_is_and_the_server_wins_a_game_point(
+	@When("^the score is (\\d+):(\\d+), the set score is (\\d+):(\\d+) and the receiver wins a game point$")
+	public void the_score_is_the_set_score_is_and_the_receiver_wins_a_game_point(
 			int arg1, int arg2, int arg3, int arg4) throws Exception {
 		// Write code here that turns the phrase above into concrete actions
 		throw new PendingException();
 	}
 
-	@When("^the score is (\\d+):(\\d+), the receiver wins a point and the receiver wins a game point$")
-	public void the_score_is_the_receiver_wins_a_point_and_the_receiver_wins_a_game_point(
+	@When("^the game score is (\\d+):(\\d+), the receiver wins a point and the receiver wins a game point$")
+	public void the_game_score_is_the_receiver_wins_a_point_and_the_receiver_wins_a_game_point(
 			int arg1, int arg2) throws Exception {
 		// Write code here that turns the phrase above into concrete actions
 		throw new PendingException();

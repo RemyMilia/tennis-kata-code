@@ -22,6 +22,9 @@ public class Game {
 
 	public void serverScores() {
 		serverScore = gameScore(serverScore, receiverScore);
+		/*
+		 * if (gameScore == 1) { serverScore = 0; receiverScore = 0; }
+		 */
 	}
 
 	public void receiverScores() {
@@ -35,6 +38,8 @@ public class Game {
 			currentPlayerScore += 10;
 		} else if (currentPlayerScore == 40 && otherSidePlayerScore == 40) {
 			currentPlayerScore = 1;
+		} else if (currentPlayerScore == 1) {
+			currentPlayerScore = 0;
 		}
 		return currentPlayerScore;
 	}

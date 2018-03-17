@@ -22,33 +22,33 @@ Scenario: Score when receiver wins a point in a game
 	Then the game score is 0:15
 	
 Scenario: Server scores after 2 points in a game
-	When the score is 30:30 and the server wins a game point
+	When the game score is 30:30 and the server wins a game point
 	Then the game score is 40:30
 	
 Scenario: Receiver scores after 2 points in a game
-	When the score is 30:30 and the receiver wins a game point
+	When the game score is 30:30 and the receiver wins a game point
 	Then the game score is 30:40 
 	
 Scenario: Server scores in DEUCE 
-	When the score is 40:40 and the server wins a game point
+	When the game score is 40:40 and the server wins a game point
 	Then the game score is 1:40
 	
 Scenario: Server scores in advantage
-	When the score is A:40, the set score is 0:0 and the server wins a game point
+	When the game score is 1:40, the set score is 0:0 and the server wins a game point
 	Then the set score is 1:0
 	And the game score is 0:0
 
 Scenario: Receiver scores in DEUCE 
-	When the score is 40:40 and the receiver wins a game point
+	When the game score is 40:40 and the receiver wins a game point
 	Then the game score is 40:1
 	
 Scenario: Receiver scores in advantage
-	When the score is 40:A, the set score is 0:0 and the receiver wins a game point
+	When the game score is 40:1, the set score is 0:0 and the receiver wins a game point
 	Then the set score is 0:1
 	And the game score is 0:0
 
 Scenario: Server scores in disadvantage
-	When the score is 40:1 and the server wins a game point
+	When the game score is 40:1 and the server wins a game point
 	Then the game score is 40:40
 
 Scenario: Server wins a game	
@@ -57,7 +57,7 @@ Scenario: Server wins a game
 	And the game score is 0:0
 	
 Scenario: Receiver wins a game	
-	When the score is 30:40, the receiver wins a point and the receiver wins a game point
+	When the game score is 30:40, the receiver wins a point and the receiver wins a game point
 	Then the set score is 0:1
 	And the game score is 0:0
 
