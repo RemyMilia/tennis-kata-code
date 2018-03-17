@@ -84,6 +84,14 @@ public class TennisGameStepDefs {
 		tennisGame.getGame().serverScores();
 	}
 
+	@When("^the score is (\\d+):(\\d+) and the receiver wins a game point$")
+	public void the_score_is_and_the_receiver_wins_a_game_point(int arg1,
+			int arg2) throws Exception {
+		tennisGame.getGame().setServerScore(arg1);
+		tennisGame.getGame().setReceiverScore(arg2);
+		tennisGame.getGame().receiverScores();
+	}
+
 	@When("^the score is A:(\\d+), the set score is (\\d+):(\\d+) and the server wins a game point$")
 	public void the_score_is_A_the_set_score_is_and_the_server_wins_a_game_point(
 			int arg1, int arg2, int arg3) throws Exception {
@@ -93,13 +101,6 @@ public class TennisGameStepDefs {
 
 	@Then("^the set score is (\\d+):(\\d+)$")
 	public void the_set_score_is(int arg1, int arg2) throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
-
-	@When("^the score is (\\d+):(\\d+) and the receiver wins a game point$")
-	public void the_score_is_and_the_receiver_wins_a_game_point(int arg1,
-			int arg2) throws Exception {
 		// Write code here that turns the phrase above into concrete actions
 		throw new PendingException();
 	}

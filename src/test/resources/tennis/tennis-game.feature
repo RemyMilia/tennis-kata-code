@@ -26,7 +26,7 @@ Scenario: Server scores after 2 points in a game
 	Then the game score is 40:30
 	
 Scenario: Receiver scores after 2 points in a game
-	When the score is 30:30 and the server wins a game point
+	When the score is 30:30 and the receiver wins a game point
 	Then the game score is 30:40 
 	
 Scenario: Server scores in DEUCE 
