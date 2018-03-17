@@ -21,6 +21,15 @@ public class Game {
 	}
 
 	public void serverScores() {
-		this.serverScore += 15;
+		serverScore = gameScore(serverScore);
+	}
+
+	public void receiverScores() {
+		receiverScore = gameScore(receiverScore);
+	}
+
+	private int gameScore(int currentPlayerScore) {
+		return currentPlayerScore += (currentPlayerScore == 0 || currentPlayerScore == 15) ? 15
+				: 10;
 	}
 }
