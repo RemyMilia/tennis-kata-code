@@ -38,29 +38,20 @@ public class TennisGame {
 		this.game = game;
 	}
 
-	public void serverScores(boolean b) {
-		if (b) {
-			this.game.serverScores();
-			if (this.game.isGame()) {
-				endGame();
-				if (this.sets.size() == 0) {
-					this.sets.add(new Set(1, 0));
-				} else {
-					this.sets.get(this.sets.size() - 1).serverScores();
-				}
-			}
-		} else {
-			this.game.receiverScores();
-			if (this.game.isGame()) {
-				endGame();
-				if (this.sets.size() == 0) {
-					this.sets.add(new Set(1, 0));
-				} else {
-					this.sets.get(this.sets.size() - 1).receiverScores();
-				}
-			}
+	public void serverScores() {
+		this.game.serverScores();
+		if (this.game.isGame()) {
+			endGame();
+			this.sets.get(this.sets.size() - 1).serverScores();
 		}
+	}
 
+	public void receiverScores() {
+		this.game.receiverScores();
+		if (this.game.isGame()) {
+			endGame();
+			this.sets.get(this.sets.size() - 1).receiverScores();
+		}
 	}
 
 	private void endGame() {

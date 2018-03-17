@@ -62,7 +62,7 @@ public class TennisGameStepDefs {
 
 	@When("^the server wins a game point$")
 	public void the_server_wins_a_game_s_point() throws Exception {
-		tennisGame.serverScores(true);
+		tennisGame.serverScores();
 	}
 
 	@Then("^the game score is (\\d+):(\\d+)$")
@@ -73,7 +73,7 @@ public class TennisGameStepDefs {
 
 	@When("^the receiver wins a game point$")
 	public void the_receiver_wins_a_game_s_point() throws Exception {
-		tennisGame.serverScores(false);
+		tennisGame.receiverScores();
 	}
 
 	@When("^the game score is (\\d+):(\\d+) and the server wins a game point$")
@@ -81,7 +81,7 @@ public class TennisGameStepDefs {
 			int arg2) throws Exception {
 		tennisGame.getGame().setServerScore(arg1);
 		tennisGame.getGame().setReceiverScore(arg2);
-		tennisGame.serverScores(true);
+		tennisGame.serverScores();
 	}
 
 	@When("^the game score is (\\d+):(\\d+) and the receiver wins a game point$")
@@ -89,7 +89,7 @@ public class TennisGameStepDefs {
 			int arg2) throws Exception {
 		tennisGame.getGame().setServerScore(arg1);
 		tennisGame.getGame().setReceiverScore(arg2);
-		tennisGame.serverScores(false);
+		tennisGame.receiverScores();
 	}
 
 	@When("^the game score is (\\d+):(\\d+), the set score is (\\d+):(\\d+) and the server wins a game point$")
@@ -97,7 +97,7 @@ public class TennisGameStepDefs {
 			int arg1, int arg2, int arg3, int arg4) throws Exception {
 		tennisGame.getGame().setServerScore(arg1);
 		tennisGame.getGame().setReceiverScore(arg2);
-		tennisGame.serverScores(true);
+		tennisGame.serverScores();
 	}
 
 	@When("^the game score is (\\d+):(\\d+), the set score is (\\d+):(\\d+) and the receiver wins a game point$")
@@ -105,7 +105,7 @@ public class TennisGameStepDefs {
 			int arg1, int arg2, int arg3, int arg4) throws Exception {
 		tennisGame.getGame().setServerScore(arg1);
 		tennisGame.getGame().setReceiverScore(arg2);
-		tennisGame.serverScores(false);
+		tennisGame.receiverScores();
 	}
 
 	@Then("^the set score is (\\d+):(\\d+)$")
