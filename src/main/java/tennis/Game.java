@@ -3,6 +3,7 @@ package tennis;
 public class Game {
 	private int serverScore = 0;
 	private int receiverScore = 0;
+	private boolean isGame = false;
 
 	public int getServerScore() {
 		return serverScore;
@@ -22,13 +23,18 @@ public class Game {
 
 	public void serverScores() {
 		serverScore = gameScore(serverScore, receiverScore);
-		/*
-		 * if (gameScore == 1) { serverScore = 0; receiverScore = 0; }
-		 */
 	}
 
 	public void receiverScores() {
 		receiverScore = gameScore(receiverScore, serverScore);
+	}
+
+	public boolean isGame() {
+		return isGame;
+	}
+
+	public void resetGame() {
+		isGame = false;
 	}
 
 	private int gameScore(int currentPlayerScore, int otherSidePlayerScore) {
@@ -39,8 +45,9 @@ public class Game {
 		} else if (currentPlayerScore == 40 && otherSidePlayerScore == 40) {
 			currentPlayerScore = 1;
 		} else if (currentPlayerScore == 1) {
-			currentPlayerScore = 0;
+			isGame = true;
 		}
 		return currentPlayerScore;
 	}
+
 }
