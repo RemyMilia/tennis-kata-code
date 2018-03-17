@@ -32,4 +32,8 @@ public class Set {
 	public void serverScores() {
 		serverScore += 1;
 	}
+
+	public void receiverScores() {
+		receiverScore += 1;
+	}
 }
