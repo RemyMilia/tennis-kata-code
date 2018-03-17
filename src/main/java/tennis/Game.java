@@ -21,15 +21,21 @@ public class Game {
 	}
 
 	public void serverScores() {
-		serverScore = gameScore(serverScore);
+		serverScore = gameScore(serverScore, receiverScore);
 	}
 
 	public void receiverScores() {
-		receiverScore = gameScore(receiverScore);
+		receiverScore = gameScore(receiverScore, serverScore);
 	}
 
-	private int gameScore(int currentPlayerScore) {
-		return currentPlayerScore += (currentPlayerScore == 0 || currentPlayerScore == 15) ? 15
-				: 10;
+	private int gameScore(int currentPlayerScore, int otherSidePlayerScore) {
+		if (currentPlayerScore == 0 || currentPlayerScore == 15) {
+			currentPlayerScore += 15;
+		} else if (currentPlayerScore == 30) {
+			currentPlayerScore += 10;
+		} else if (currentPlayerScore == 40 && otherSidePlayerScore == 40) {
+			currentPlayerScore = 1;
+		}
+		return currentPlayerScore;
 	}
 }
