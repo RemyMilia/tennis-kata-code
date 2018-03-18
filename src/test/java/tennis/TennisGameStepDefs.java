@@ -104,10 +104,4 @@ public class TennisGameStepDefs {
 		throw new PendingException();
 	}
 
-	@When("^the game score is (\\d+):(\\d+), the receiver wins a point and the receiver wins a game point$")
-	public void the_game_score_is_the_receiver_wins_a_point_and_the_receiver_wins_a_game_point(
-			int arg1, int arg2) throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
 }

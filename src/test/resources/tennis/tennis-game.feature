@@ -56,7 +56,7 @@ Scenario: Server wins a game
 	And the game score is 0:0
 	
 Scenario: Receiver wins a game	
-	When the game score is 30:40, the receiver wins a point and the receiver wins a game point
+	When the game score is 30:40, the set score is 0:0 and the receiver wins a game point
 	Then the set score is 0:1
 	And the game score is 0:0
 
