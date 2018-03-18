@@ -3,28 +3,15 @@ package tennis;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Data;
+
+@Data
 public class Game {
 	private static final String SCORER = "SCORER";
 	private static final String SCORED = "SCORED";
 	private int serverScore = 0;
 	private int receiverScore = 0;
 	private boolean isGame = false;
-
-	public int getServerScore() {
-		return serverScore;
-	}
-
-	public void setServerScore(int serverScore) {
-		this.serverScore = serverScore;
-	}
-
-	public int getReceiverScore() {
-		return receiverScore;
-	}
-
-	public void setReceiverScore(int receiverScore) {
-		this.receiverScore = receiverScore;
-	}
 
 	public void serverScores() {
 		Map<String, Integer> newGameScore = gameScore(serverScore,
