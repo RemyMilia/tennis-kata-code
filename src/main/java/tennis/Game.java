@@ -9,22 +9,22 @@ import lombok.Data;
 public class Game {
 	private static final String SCORER = "SCORER";
 	private static final String SCORED = "SCORED";
+
 	private int serverScore = 0;
 	private int receiverScore = 0;
 	private boolean isGame = false;
 
-	public void serverScores() {
-		Map<String, Integer> newGameScore = gameScore(serverScore,
-				receiverScore);
-		serverScore = newGameScore.get(SCORER);
-		receiverScore = newGameScore.get(SCORED);
-	}
-
-	public void receiverScores() {
-		Map<String, Integer> newGameScore = gameScore(receiverScore,
-				serverScore);
-		receiverScore = newGameScore.get(SCORER);
-		serverScore = newGameScore.get(SCORED);
+	public void serverScores(boolean isScoredByServer) {
+		Map<String, Integer> newGameScore;
+		if (isScoredByServer) {
+			newGameScore = gameScorer(serverScore, receiverScore);
+			serverScore = newGameScore.get(SCORER);
+			receiverScore = newGameScore.get(SCORED);
+		} else {
+			newGameScore = gameScorer(receiverScore, serverScore);
+			serverScore = newGameScore.get(SCORED);
+			receiverScore = newGameScore.get(SCORER);
+		}
 	}
 
 	public boolean isGame() {
@@ -35,7 +35,7 @@ public class Game {
 		isGame = false;
 	}
 
-	private Map<String, Integer> gameScore(int scorer, int scored) {
+	private Map<String, Integer> gameScorer(int scorer, int scored) {
 		Map<String, Integer> gameScoreMap = new HashMap<>();
 		switch (scorer) {
 		case 0:
@@ -52,19 +52,16 @@ public class Game {
 				scored = 40;
 			} else {
 				isGame = true;
-				scorer = 0;
-				scored = 0;
+				scorer = scored = 0;
 			}
 			break;
 		case 1:
 			isGame = true;
-			scorer = 0;
-			scored = 0;
+			scorer = scored = 0;
 			break;
 		}
 		gameScoreMap.put(SCORER, scorer);
 		gameScoreMap.put(SCORED, scored);
 		return gameScoreMap;
 	}
-
 }

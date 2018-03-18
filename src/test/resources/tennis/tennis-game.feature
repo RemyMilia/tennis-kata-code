@@ -1,6 +1,6 @@
-Feature: Winning a Point Increases Score Correctly
-As a library user
-I want the score to increase when a player wins a point
+Feature: In tennis match, winning a point increases score correctly
+As a tennis referree user
+I want to use a tool that increases the points correctly each time the server or receiver wins a point
 So that I can display the current score correctly
 
 Background: 

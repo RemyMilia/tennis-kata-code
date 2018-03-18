@@ -7,11 +7,12 @@ public class Match {
 	private int serverScore = 0;
 	private int receiverScore = 0;
 
-	public void serverScores() {
-		serverScore += 1;
+	public void serverScores(boolean isScoredByServer) {
+		if (isScoredByServer) {
+			serverScore += 1;
+		} else {
+			receiverScore += 1;
+		}
 	}
 
-	public void receiverScores() {
-		receiverScore += 1;
-	}
 }
