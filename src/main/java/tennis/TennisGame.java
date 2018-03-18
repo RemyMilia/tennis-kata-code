@@ -1,5 +1,6 @@
 package tennis;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TennisGame {
@@ -43,6 +44,12 @@ public class TennisGame {
 		if (this.game.isGame()) {
 			this.sets.get(this.sets.size() - 1).serverScores();
 			this.game.resetGame();
+			if (this.sets.get(this.sets.size() - 1).isSet()) {
+				// new copy because of immutable asList in test
+				this.sets = new ArrayList<Set>(this.sets);
+				this.sets.add(new Set());
+				this.match.serverScores();
+			}
 		}
 	}
 
@@ -51,6 +58,11 @@ public class TennisGame {
 		if (this.game.isGame()) {
 			this.sets.get(this.sets.size() - 1).receiverScores();
 			this.game.resetGame();
+			if (this.sets.get(this.sets.size() - 1).isSet()) {
+				this.sets = new ArrayList<Set>(this.sets);
+				this.sets.add(new Set());
+				this.match.receiverScores();
+			}
 		}
 	}
 

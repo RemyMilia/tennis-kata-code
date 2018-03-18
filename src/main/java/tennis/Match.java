@@ -19,4 +19,12 @@ public class Match {
 	public void setReceiverScore(int receiverScore) {
 		this.receiverScore = receiverScore;
 	}
+
+	public void serverScores() {
+		serverScore += 1;
+	}
+
+	public void receiverScores() {
+		receiverScore += 1;
+	}
 }
