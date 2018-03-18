@@ -26,8 +26,8 @@ public class TennisGameStepDefs {
 	public void the_tennis_game_starts() throws Exception {
 	}
 
-	@Then("^the game score should be (\\d+):(\\d+)$")
-	public void the_game_score_should_be(int serverScore, int receiverScore)
+	@Then("^the game score is (\\d+):(\\d+)$")
+	public void the_game_score_is(int serverScore, int receiverScore)
 			throws Exception {
 		assertThat(tennisGame.getGame().getServerScore())
 				.isEqualTo(serverScore);
@@ -35,24 +35,19 @@ public class TennisGameStepDefs {
 				receiverScore);
 	}
 
-	@Then("^the set score should be (\\d+):(\\d+)$")
-	public void the_set_score_should_be(int serverScore, int receiverScore)
+	@Then("^the set score is (\\d+):(\\d+)$")
+	public void the_set_score_is(int serverScore, int receiverScore)
 			throws Exception {
 		assertThat(
 				tennisGame.getSets().stream().findFirst().get()
-						.getReceiverScore()).isEqualTo(serverScore);
+						.getServerScore()).isEqualTo(serverScore);
 		assertThat(
 				tennisGame.getSets().stream().findFirst().get()
-						.getServerScore()).isEqualTo(receiverScore);
+						.getReceiverScore()).isEqualTo(receiverScore);
 	}
 
-	@Then("^the set number should be (\\d+)$")
-	public void the_set_number_should_be(int sets) throws Exception {
-		assertThat(tennisGame.getSets().size()).isEqualTo(sets);
-	}
-
-	@Then("^the match score should be (\\d+):(\\d+)$")
-	public void the_match_score_should_be(int serverScore, int receiverScore)
+	@Then("^the match score is (\\d+):(\\d+)$")
+	public void the_match_score_is(int serverScore, int receiverScore)
 			throws Exception {
 		assertThat(tennisGame.getMatch().getServerScore()).isEqualTo(
 				serverScore);
@@ -63,12 +58,6 @@ public class TennisGameStepDefs {
 	@When("^the server wins a game point$")
 	public void the_server_wins_a_game_s_point() throws Exception {
 		tennisGame.serverScores();
-	}
-
-	@Then("^the game score is (\\d+):(\\d+)$")
-	public void the_game_score_is(int arg1, int arg2) throws Exception {
-		assertThat(tennisGame.getGame().getServerScore()).isEqualTo(arg1);
-		assertThat(tennisGame.getGame().getReceiverScore()).isEqualTo(arg2);
 	}
 
 	@When("^the receiver wins a game point$")
@@ -108,14 +97,6 @@ public class TennisGameStepDefs {
 		tennisGame.receiverScores();
 	}
 
-	@Then("^the set score is (\\d+):(\\d+)$")
-	public void the_set_score_is(int arg1, int arg2) throws Exception {
-		assertThat(tennisGame.getSets().get(0).getServerScore())
-				.isEqualTo(arg1);
-		assertThat(tennisGame.getSets().get(0).getReceiverScore()).isEqualTo(
-				arg2);
-	}
-
 	@When("^the score is (\\d+):(\\d+), the set score is (\\d+):(\\d+) and the receiver wins a game point$")
 	public void the_score_is_the_set_score_is_and_the_receiver_wins_a_game_point(
 			int arg1, int arg2, int arg3, int arg4) throws Exception {
@@ -129,11 +110,4 @@ public class TennisGameStepDefs {
 		// Write code here that turns the phrase above into concrete actions
 		throw new PendingException();
 	}
-
-	@Then("^the match score (\\d+):(\\d+)$")
-	public void the_match_score(int arg1, int arg2) throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
-
 }

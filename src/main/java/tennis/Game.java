@@ -1,6 +1,11 @@
 package tennis;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Game {
+	private static final String SCORER = "SCORER";
+	private static final String SCORED = "SCORED";
 	private int serverScore = 0;
 	private int receiverScore = 0;
 	private boolean isGame = false;
@@ -22,11 +27,17 @@ public class Game {
 	}
 
 	public void serverScores() {
-		serverScore = gameScore(serverScore, receiverScore);
+		Map<String, Integer> newGameScore = gameScore(serverScore,
+				receiverScore);
+		serverScore = newGameScore.get(SCORER);
+		receiverScore = newGameScore.get(SCORED);
 	}
 
 	public void receiverScores() {
-		receiverScore = gameScore(receiverScore, serverScore);
+		Map<String, Integer> newGameScore = gameScore(receiverScore,
+				serverScore);
+		receiverScore = newGameScore.get(SCORER);
+		serverScore = newGameScore.get(SCORED);
 	}
 
 	public boolean isGame() {
@@ -37,17 +48,36 @@ public class Game {
 		isGame = false;
 	}
 
-	private int gameScore(int currentPlayerScore, int otherSidePlayerScore) {
-		if (currentPlayerScore == 0 || currentPlayerScore == 15) {
-			currentPlayerScore += 15;
-		} else if (currentPlayerScore == 30) {
-			currentPlayerScore += 10;
-		} else if (currentPlayerScore == 40 && otherSidePlayerScore == 40) {
-			currentPlayerScore = 1;
-		} else if (currentPlayerScore == 1) {
+	private Map<String, Integer> gameScore(int scorer, int scored) {
+		Map<String, Integer> gameScoreMap = new HashMap<>();
+		switch (scorer) {
+		case 0:
+		case 15:
+			scorer += 15;
+			break;
+		case 30:
+			scorer += 10;
+			break;
+		case 40:
+			if (scored == 40) {
+				scorer = 1;
+			} else if (scored == 1) {
+				scored = 40;
+			} else {
+				isGame = true;
+				scorer = 0;
+				scored = 0;
+			}
+			break;
+		case 1:
 			isGame = true;
+			scorer = 0;
+			scored = 0;
+			break;
 		}
-		return currentPlayerScore;
+		gameScoreMap.put(SCORER, scorer);
+		gameScoreMap.put(SCORED, scored);
+		return gameScoreMap;
 	}
 
 }

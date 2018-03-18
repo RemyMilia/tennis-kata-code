@@ -41,22 +41,17 @@ public class TennisGame {
 	public void serverScores() {
 		this.game.serverScores();
 		if (this.game.isGame()) {
-			endGame();
 			this.sets.get(this.sets.size() - 1).serverScores();
+			this.game.resetGame();
 		}
 	}
 
 	public void receiverScores() {
 		this.game.receiverScores();
 		if (this.game.isGame()) {
-			endGame();
 			this.sets.get(this.sets.size() - 1).receiverScores();
+			this.game.resetGame();
 		}
 	}
 
-	private void endGame() {
-		this.game.setReceiverScore(0);
-		this.game.setServerScore(0);
-		this.game.resetGame();
-	}
 }

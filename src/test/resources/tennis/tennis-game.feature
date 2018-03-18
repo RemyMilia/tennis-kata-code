@@ -8,10 +8,9 @@ Background:
 
 Scenario: Score at the beginning of the game
 	When the tennis game starts
-  Then the game score should be 0:0
-  And the set number should be 1
-  And the set score should be 0:0
-	And the match score should be 0:0
+  Then the game score is 0:0
+  And the set score is 0:0
+	And the match score is 0:0
 
 Scenario: Score when server wins a point in a game
 	When the server wins a game point
@@ -64,4 +63,4 @@ Scenario: Receiver wins a game
 Scenario: Server wins a set
 	When the game score is 40:30, the set score is 5:0 and the server wins a game point
 	Then the set score is 6:0 
-	And the match score 1:0
+	And the match score is 1:0
